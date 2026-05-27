@@ -259,3 +259,8 @@ jobs:
                 body: body
               });
             }
+            
+      - name: Baidu SEO Push
+        run: |
+          curl -s https://www.weblog.ren/sitemap.xml | grep -oE '<loc>[^<]+</loc>' | sed -e 's/<loc>//' -e 's/<\/loc>//' | grep 'www.weblog.ren' > urls.txt
+          curl -H 'Content-Type: text/plain' --data-binary @urls.txt "http://data.zz.baidu.com/urls?site=https://www.weblog.ren&token=LPSdVXmEuDkz5Kve"
