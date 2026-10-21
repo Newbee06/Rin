@@ -12,8 +12,8 @@ export const feedListSchema = t.Object({
 });
 
 export const feedCreateSchema = t.Object({
-  title: t.String(),
-  content: t.String(),
+  title: t.String({ minLength: 1 }),
+  content: t.String({ minLength: 1 }),
   summary: t.String({ optional: true }),
   alias: t.String({ optional: true }),
   draft: t.Boolean(),
@@ -62,6 +62,9 @@ export const updateProfileSchema = t.Object({
 
 export const commentCreateSchema = t.Object({
   content: t.String(),
+  guestName: t.String({ optional: true }),
+  guestEmail: t.String({ optional: true }),
+  guestWebsite: t.String({ optional: true }),
 });
 
 // ============================================================================
